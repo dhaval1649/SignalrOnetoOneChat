@@ -1,0 +1,64 @@
+<style>
+  img { max-width: 100%; }
+  .received_withd_msg p { background: #ebebeb none repeat scroll 0 0; border-radius: 3px; color: #646464; font-size: 14px; margin: 0; padding: 5px 10px 5px 12px; width: 80%; }
+  .mesgs { float: left; padding: 30px 15px 0 25px; width: 90%; }
+  .messaging { padding: 0 0 50px 0; }
+  .msg_history { height: 516px; overflow-y: auto; }
+  .incoming_msg_img { display: inline-block; width: 6%; }
+  .received_msg { display: inline-block; padding: 0 0 0 10px; vertical-align: top; width: 92%; }
+  .outgoing_msg { overflow: hidden; margin: 26px 0 26px; }
+  .sent_msg { float: right; width: 46%; }
+  .sent_msg p { background: #05728f none repeat scroll 0 0; border-radius: 3px; font-size: 14px; margin: 0; color: #fff; padding: 5px 10px 5px 12px; width: 100%; }
+  .type_msg { border-top: 1px solid #c4c4c4; position: relative; }
+  .input_msg_write input { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; border: medium none; color: #4c4c4c; font-size: 15px; min-height: 48px; width: 100%; }
+  .msg_send_btn { background: #05728f none repeat scroll 0 0; border: medium none; border-radius: 50%; color: #fff; cursor: pointer; font-size: 17px; height: 33px; position: absolute; right: 0; top: 11px; width: 33px; }
+</style>
+
+<!--<ul class="nav nav-tabs">
+  <li *ngFor="let tab of tabs" [ngClass]="{'active': currentRoom==tab.heading}" (click)="OnRoomChange(tab.heading)"><a data-toggle="tab" href="#home">{{tab.heading}}</a></li>
+</ul>-->
+<!--<div class="tab-content">
+  <div *ngFor="let tab of tabs" id="home" class="tab-pane fade in" [ngClass]="{'active': currentRoom==tab.heading}">-->
+<input type="hidden" name="room" [(ngModel)]="chatMessage.touser" value="{{username}}" />
+<h3>{{username}}</h3>
+
+<!--<p *ngFor="let msg of filteredMessage"><i class="fa fa-user" aria-hidden="true"></i>{{msg.user}}<br />{{msg.message}}</p>-->
+
+<div class="mesgs">
+  <div class="msg_history">
+    <div class="incoming_msg" *ngFor="let msg of filteredMessage">
+    
+      <!--<div  [ngClass]="msg.user==currentUser?'outgoing_msg':'incoming_msg_img'"> <img src="https://ptetutorials.com/images/user-profile.png" alt="{{msg.user}}"> </div>-->
+      <div [ngClass]="msg.user==currentUser?'outgoing_msg':'received_msg'" class="received_msg">
+        <div [ngClass]="msg.user==currentUser?'sent_msg':'received_withd_msg'" class="received_withd_msg">
+          <p>
+            {{msg.message}}
+          </p>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+
+
+  
+</div>
+
+<!--</div>
+</div>-->
+<form class="form-inline" (ngSubmit)="sendMessage()">
+
+  <footer class="footer" style="width:70%;background:#fdd679; bottom:0%;position:fixed">
+    <div class="container">
+      <div class="row" style="background:#fdd679;">
+        <div class="col-sm-9">
+          <div style="width:100%;  padding-top: 10px;" class="clearfix">
+            <input type="text" style="width:50%;padding:0px 2%;margin-bottom:5px; float:left; height:32px;" type="text" id="message" [(ngModel)]="chatMessage.message" name="message" class="form-control pull-left shadow" input-focus="content" />
+            <input style="width:26%;padding:6px 0px;text-align:center;margin-bottom:5px; float:right; border-radius:3px; background:#e9a403;" id="sendmessage" class="btn btn-default pull-right shadow" type="submit" value="Send" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</form>

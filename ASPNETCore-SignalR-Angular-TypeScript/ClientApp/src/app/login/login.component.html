@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>Login</h3>
+    <form (ngSubmit)="onSave()"  >
+      <div class="form-group row">
+        <label for="firstname-input" class="col-2 col-form-label">Username</label>
+        <div class="col-10">
+          <input class="form-control" type="text" name="firstName" [(ngModel)]="userModel.userName">
+          <!--<span class="text-danger" *ngIf="name.invalid && formDir.submitted">
+            Name is required.
+          </span>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-2">
+        </div>
+        <div class="col-1">
+          <button type="submit"  class="btn btn-success">Login</button>
+        </div>
+      </div>
+    </form>
+    <!--<ul>
+      <li [routerLinkActive]='["link-active"]' *ngFor="let users of users">
+        <a [routerLink]='["/user/",users.userName]' (click)='collapse()'>
+          <span class='glyphicon glyphicon-th-list'></span> {{ users.userName }} &nbsp;&nbsp;<i class="glyphicon glyphicon-circle" style="color:green"></i>
+        </a>
+      </li>
+    </ul>-->
+  </div>
